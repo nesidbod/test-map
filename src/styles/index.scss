@@ -1,0 +1,16 @@
+body {
+  font-family: Montserrat !important;
+
+  .main-page-container {
+    background-size: cover;
+    min-height: 100vh;
+    width: 100%;
+    background-attachment: fixed;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+}
