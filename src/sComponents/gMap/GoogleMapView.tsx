@@ -21,7 +21,6 @@ const GoogleMapView = withGoogleMap((props: IMapProps) =>
       rotateControl: false,
       fullscreenControl: false
     }}
-    onClick={(event: any) => console.log(props.indicationsData)}
     defaultCenter={props.position}
     center={props.position}
   >
