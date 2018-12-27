@@ -15,7 +15,6 @@ class Map extends React.Component<ISettingsProps, any> {
       center: { lat: 32.793587, lng: 35.052716 },
       activeCenter: { type: '', index: 0 },
       indications: [
-        { color: 'green', value: 2, id: 0 },
         { color: 'yellow', value: 3, id: 1 },
         { color: 'orange', value: 1, id: 2 },
         { color: 'red', value: 2, id: 3 }],
@@ -57,6 +56,7 @@ class Map extends React.Component<ISettingsProps, any> {
               onOpen={(val: boolean) => this.setState({ openPopup: val })}
               indicationsData={this.state.indicationsData}
               showDetails={(id: string, value: boolean) => this.showDetails(id, value)}
+              setHideCenter={this.setHideCenter}
             />
           </div>
           <div className="map-share">
@@ -77,6 +77,11 @@ class Map extends React.Component<ISettingsProps, any> {
       return el
     })
     this.setState({ indicationsData })
+  }
+
+  private setHideCenter = (value:any) => {
+    this.setState({ center: value })
+
   }
 
   private setCenter = (type: string) => {

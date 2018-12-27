@@ -61,6 +61,10 @@
           margin-left: -9px;
         }
 
+        img {
+          height: 100%;
+        }
+
         .map-dot-mess {
           background-color: #ffffff;
           border-radius: 5px;
@@ -86,20 +90,8 @@
         }
       }
 
-      .map-dot.green {
-        background-color: #117511;
-      }
-
       .map-dot.yellow {
         background-color: #e6e621;
-      }
-
-      .map-dot.orange {
-        background-color: orange;
-      }
-
-      .map-dot.red {
-        background-color: #d81717;
       }
 
     }
