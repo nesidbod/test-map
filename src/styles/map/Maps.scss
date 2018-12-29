@@ -8,6 +8,17 @@
     align-items: center;
     flex-direction: column;
 
+    .scroll-content {
+      position: absolute;
+
+      .line {
+        position: absolute;
+        width: 100%;
+        top:20px;
+        border-bottom:  1px solid red;
+      }
+    }
+
     .map-header {
       display: flex;
       align-items: center;
@@ -55,10 +66,15 @@
         cursor: pointer;
 
         .map-dot-time {
-          height: 40px;
-          margin-top: -20px;
+          height: 20px;
+          width: 50px;
+          text-align: center;
+          margin-top: -45px;
           font-size: 16px;
-          margin-left: -9px;
+          margin-left: -15px;
+          color: black !important;
+          background-color: #ffffff;
+          border: 1px solid #979797;
         }
 
         img {
@@ -104,5 +120,20 @@
       align-items: center;
       justify-content: center;
     }
+  }
+}
+
+.map-content-scroll {
+  height: 500px;
+  width: 860px;
+  overflow: hidden;
+  position: relative;
+
+  img {
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    /* right: 0; */
+    top: 0px;
   }
 }
