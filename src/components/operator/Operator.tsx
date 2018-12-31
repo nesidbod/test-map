@@ -36,10 +36,11 @@ class Operator extends React.Component<ISettingsProps, any> {
               </div>
               <div className="operator-container-item-header-location">
                 <img src={mapIcon} />
-                <span onClick={() => this.setState({ accept: true })}>{el.location}</span>
+                <span onClick={() => this.setState({ accept: true, open: false })}>{el.location}</span>
               </div>
             </div>
-            <div className="operator-container-item-details-buttom" onClick={() => this.openDetails(el.id)}> Details <Icon>expand_more</Icon> </div>
+            <div className="operator-container-item-details-buttom"
+             onClick={() => this.openDetails(el.id)}> Details <Icon>expand_more</Icon> </div>
 
             {this.state.open === el.id ?
               <div className="operator-container-item-details">
@@ -49,7 +50,8 @@ class Operator extends React.Component<ISettingsProps, any> {
                 </div>
                 <div className="operator-container-item-details-item">
                   <div className="operator-container-item-details-item-label">Location:</div>
-                  <div className="operator-container-item-details-item-value" ><span className="map" onClick={() => this.setState({ accept: true })}>{el.location}</span></div>
+                  <div className="operator-container-item-details-item-value" ><span className="map" 
+                  onClick={() => this.setState({ accept: true, open: false })}>{el.location}</span></div>
                 </div>
                 <div className="operator-container-item-details-item">
                   <div className="operator-container-item-details-item-label">Area:</div>
