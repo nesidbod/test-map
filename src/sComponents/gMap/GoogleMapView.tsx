@@ -56,7 +56,7 @@ const GoogleMapView = withGoogleMap((props: IMapProps) =>
     onClick={(el) => console.log(el.latLng.lat(), el.latLng.lng())}
     onDrag={() => {
       if (!strictBounds.contains(mapSet.getCenter())) {
-        mapSet.panToBounds(strictBounds, 20)
+        mapSet.panToBounds(strictBounds, 5)
       }
     }}
     ref={map => {
