@@ -1,0 +1,179 @@
+{
+  "testData": [
+    {
+      "date": "Mon Dec 14",
+      "Scent Recorder 1": [
+        {
+          "time": "00:05",
+          "status": "green",
+          "message": "some text here to be displayed when clicking on the icon",
+          "id": 0
+        },
+        {
+          "time": "00:35",
+          "status": "orange",
+          "message": "...",
+          "id": 0
+        }
+      ],
+      "Scent Recorder 2": [
+        {
+          "time": "00:05",
+          "status": "green",
+          "message": "...",
+          "id": 1
+        },
+        {
+          "time": "00:35",
+          "status": "orange",
+          "message": "...",
+          "id": 1
+        }
+      ],
+      "Mobile Scent Recorder": []
+    }
+  ],
+  "recorders_global_state": [
+    {
+      "id": 0,
+      "coordinates": {
+        "lat": 32.78800244000398,
+        "lng": 35.05891807758121
+      },
+      "location": "G5"
+    },
+    {
+      "id": 1,
+      "coordinates": {
+        "lat":32.79929643743554, "lng": 35.0545709406465
+      },
+      "location": "G5"
+    },
+    {
+      "id": 2,
+      "coordinates": {
+        "lat": 32.79817207921318, "lng": 35.06037943093315
+      },
+      "location": "G5"
+    },
+    {
+      "id": 3,
+      "coordinates": {
+        "lat": 32.7934131259387, "lng": 35.069190619830124
+      },
+      "location": "G5"
+    },
+    {
+      "id": 4,
+      "coordinates": {
+        "lat":32.79537630438263, "lng": 35.05928508965508
+      },
+      "location": "G5"
+    },
+    {
+      "id": 5,
+      "coordinates": {
+        "lat": 32.789838607019284, "lng":35.05716078011528
+      },
+      "location": "G5"
+    },
+    {
+      "id": 6,
+      "coordinates": {
+        "lat": 32.797216114483895, "lng": 35.06151668755547
+      },
+      "location": "G5"
+    },
+    {
+      "id": 7,
+      "coordinates": {
+        "lat": 32.79483455650888, "lng": 35.056410117685346
+      },
+      "location": "G5"
+    },
+    {
+      "id": 8,
+      "coordinates": {
+        "lat": 32.79586030509149, "lng": 35.063855573816454
+      },
+      "location": "G5"
+    },
+    {
+      "id": 9,
+      "coordinates": {
+        "lat":  32.79402347855168, "lng": 35.06241790978447
+      },
+      "location": "G5"
+    },
+    {
+      "id": 10,
+      "coordinates": {
+        "lat": 32.79446675401682, "lng": 35.06022037517823
+      },
+      "location": "G5"
+    },
+    {
+      "id": 11,
+      "coordinates": {
+        "lat":32.79230936413287, "lng": 35.05961828488694
+      },
+      "location": "G5"
+    },
+    {
+      "id": 12,
+      "coordinates": {
+        "lat": 32.791065227696734, "lng": 35.05902759758965
+      },
+      "location": "G5"
+    },
+    {
+      "id": 13,
+      "coordinates": {
+        "lat": 32.798330086211436, "lng": 35.05561264298581
+      },
+      "location": "G5"
+    },
+    {
+      "id": 14,
+      "coordinates": {
+        "lat": 32.79355449412625, "lng": 35.05218260018364
+      },
+      "location": "G5"
+    },
+    {
+      "id": 15,
+      "coordinates": {
+        "lat": 32.79806385730691, "lng": 35.05265466897026
+      },
+      "location": "G5"
+    },
+    {
+      "id": 16,
+      "coordinates": {
+        "lat": 32.795863316643505, "lng":35.05519740311638
+      },
+      "location": "G5"
+    },
+    {
+      "id": 17,
+      "coordinates": {
+        "lat": 32.796855322000425, "lng": 35.054023872278776
+      },
+      "location": "G5"
+    },
+    {
+      "id": 18,
+      "coordinates": {
+        "lat": 32.7973063002748, "lng": 35.05695693223015
+      },
+      "location": "G5"
+    },
+    {
+      "id": 19,
+      "coordinates": {
+        "lat": 32.79628719551429, "lng": 35.058072731180346
+      },
+      "location": "G5"
+    }
+  ]
+}

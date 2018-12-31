@@ -36,7 +36,7 @@ class Map extends React.Component<ISettingsProps, any> {
         { lat: 32.79483455650888, lng: 35.056410117685346, type: 'green', id: 7 },
         { lat: 32.79586030509149, lng: 35.063855573816454, type: 'green', id: 8 },
         { lat:  32.79402347855168, lng: 35.06241790978447, type: 'green', id: 9 },
-        { lat: 2.79446675401682, lng: 35.06022037517823, type: 'green', id: 10 },
+        { lat: 32.79446675401682, lng: 35.06022037517823, type: 'green', id: 10 },
         { lat:32.79230936413287, lng: 35.05961828488694, type: 'green', id: 11 }, 
         { lat: 32.791065227696734, lng: 35.05902759758965, type: 'green', id: 12 },
         { lat: 32.798330086211436, lng: 35.05561264298581, type: 'green', id: 13 },
