@@ -28,6 +28,7 @@ level_red_messages = ['Major leak has been found in the tower, evacuate pessonel
                     'Long corroded section of pipes has been identified, close line.',
                     'A small leaking anchor has been identified, but takes a long time to fix.']
 starting_date = '2018-12-14 00:00:00'
+ending_date = '2019-01-20 00:00:00'
 global_state = [
     {
       "id": 0,
@@ -277,7 +278,8 @@ def get_new_elapsed(event_status, elapsed_time, min_to_event):
 
 def generate_data():
     start_date = datetime.strptime(starting_date, '%Y-%m-%d %H:%M:%S')
-    end_date = datetime.utcnow()
+    # end_date = datetime.utcnow()
+    end_date = datetime.strptime(ending_date, '%Y-%m-%d %H:%M:%S')
     processing_date = start_date
     current_date_data = empty_day_data(processing_date.strftime('%Y-%m-%d'))
     while (end_date > processing_date):
