@@ -18,7 +18,8 @@
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
-    "experimentalDecorators": true
+    "resolveJsonModule": true,
+    // "esModuleInterop": true,
   },
   "include": ["src/**/*"],
   "exclude": [
@@ -30,6 +31,7 @@
     "jest",
     "src/tests/setupTests.ts",
     "**/*.test.ts",
-    "**/*.test.tsx"
+    "**/*.test.tsx",
+    "*.json"
   ]
 }

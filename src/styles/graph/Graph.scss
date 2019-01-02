@@ -1,6 +1,70 @@
 .graph-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
 
     .graph {
         background-color: #ffffff;
+        width: 90%;
+        border-radius: 10px;
+        max-width: 700px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        // max-height: 300px;
+    }
+
+    .graph-buttons {
+        max-width: 400px;
+        display: flex;
+        width: 90%;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 0;
+
+        .graph-button {
+            background-color: #3c308c;
+            width: 50px;
+            display: flex;
+            padding: 5px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            color: #ffffff;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .graph-button.active {
+            background-color: #e6e621;
+        }
+    }
+
+    .graph-locations {
+        color: #ffffff;
+        font-weight: 600;
+        width: 90%;
+        max-width: 700px;
+        padding-top: 10px;
+        display: flex;
+        flex-direction: column; 
+
+        .graph-locations-container {
+            max-height: 185px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+
+            .graph-location {
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+
+                .checkbox {
+                    color: #ffffff;
+                }
+            }
+        }
     }
 }
