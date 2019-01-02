@@ -26,19 +26,16 @@ class LocalMap extends React.Component<ISettingsProps, any> {
 
   public componentWillMount () {
     const gridData = []
-    console.log('======222222222222222222================')
 
     for (let i = 0; i < 3; i++) {
       for (let x = 0; x < 4; x++) {
         gridData.push({ y: i, x, active: false })
       }
     }
-    console.log('======================',gridData)
     this.setState({gridData})
   }
 
   public render() {
-    console.log('gridData',this.state.gridData)
 
     return (
       <div className="local-map-container">

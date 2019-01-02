@@ -53,7 +53,7 @@ const GoogleMapView = withGoogleMap((props: IMapProps) =>
       fullscreenControl: false,
     }}
 
-    onClick={(el) => console.log(el.latLng.lat(), el.latLng.lng())}
+    // onClick={(el) => console.log(el.latLng.lat(), el.latLng.lng())}
     onDrag={() => {
       if (!strictBounds.contains(mapSet.getCenter())) {
         mapSet.panToBounds(strictBounds, 5)
@@ -72,12 +72,15 @@ const GoogleMapView = withGoogleMap((props: IMapProps) =>
       return <Polyline key={index}
         options={{
           path: el.coord,
-          strokeColor: '#0da20d',
-          strokeOpacity: 1,
-          strokeWeight: 2,
+          strokeColor: '#4c4a4a',
+          strokeOpacity: 0,
+          // strokeWeight: 2,
           icons: [{
             offset: '0',
-            repeat: '10px'
+            repeat: '20px',
+            icon: {path: 'M 0,-1 0,1',
+            strokeOpacity: 1,
+            scale: 4}
           }],
         }}
       />
