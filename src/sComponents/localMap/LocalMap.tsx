@@ -4,6 +4,7 @@ import '../../styles/localMap/LocalMap.css'
 // import errorIcon from '../../styles/img/error.png'
 import local_back from '../../styles/img/LocalMap.png'
 import senser from '../../styles/img/nano_logo.png'
+import axios from 'axios';
 
 interface ISettingsProps {
   // history: any
@@ -60,8 +61,14 @@ class LocalMap extends React.Component<ISettingsProps, any> {
 
   private searchError = () => {
     this.setState({ search: true })
+    axios.get(`http://192.168.5.2:8080/v1/do_measurement?app=dogs&name=operator1`)
+      .then(res => {
+      })
+      .catch(function(error) {
+        console.log(error)
+      });
     this.setNextGrid()
-    setTimeout(() => this.setState({ search: false }), 10000)
+    setTimeout(() => this.setState({ search: false }), 13000)
   }
 
   private createGrid = () => {
