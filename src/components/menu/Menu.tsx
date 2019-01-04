@@ -120,7 +120,7 @@ export default decorate(
             <Toolbar variant="dense">
               <IconButton color="inherit" aria-label="Menu" onClick={this.handleMenu2}
               >
-                <MenuIcon />
+                <MenuIcon/>
               </IconButton>
               <Menu
                 id="burger-menu"
@@ -136,6 +136,7 @@ export default decorate(
                     alt="user profile"
                     src={''}
                     className={'user-profile-img'}
+                    
                   /> 
                   <ListItemText
                     className="playlist-content-title"
@@ -175,7 +176,7 @@ export default decorate(
     private getShowingValue(pathName: string) {
       const pathLevels = pathName.split('/').slice(1)
       switch (true) {
-        case pathLevels[0] === 'about': {
+        case pathLevels[0] === 'graph': {
           return false
         }
         case pathLevels[0] === 'login': {

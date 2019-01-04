@@ -16,23 +16,21 @@ class LocalMap extends React.Component<ISettingsProps, any> {
       open: '',
       search: false,
       gridData: [],
-      testData: [
-        { id: 1, type: 'Benzene', location: 'G5', voc: 'benzene, hight concetration', Area: 'near oil tanks', detected: '', responder: 'Moshe', direction: 'nw', speed: '10km/hr' },
-        // { id: 2,type: 'Gaz', location: 'G1', voc: 'gaz, hight concetration', Area: 'near gaz tanks', detected: '', responder: 'Moshe', direction: 'nw', speed: '13km/hr' },
-
-      ]
     }
   }
 
-  public componentWillMount () {
+  public componentWillMount() {
     const gridData = []
 
     for (let i = 0; i < 3; i++) {
       for (let x = 0; x < 4; x++) {
-        gridData.push({ y: i, x, active: false })
+        gridData.push({
+          y: i, x, active: false,
+          color: i === 1 && x === 2 ? 'orange' : i === 1 && x === 2 ? 'red' : (x > 0 && (i === 0 || i === 2)) ? 'orange' : 'yellow'
+        })
       }
     }
-    this.setState({gridData})
+    this.setState({ gridData })
   }
 
   public render() {
@@ -46,7 +44,7 @@ class LocalMap extends React.Component<ISettingsProps, any> {
         </div>
 
         <div className={`operator-container-button icon ${this.state.search ? 'active' : ''}`}
-          onClick={this.searchError}><img src={senser} /><span>Measure</span></div>
+          onClick={(event) => !this.state.search &&this.searchError()}><img src={senser} /><span>Measure</span></div>
         <div className="local-map-report-container">
           <div className="local-map-report">
             <textarea />
@@ -68,13 +66,13 @@ class LocalMap extends React.Component<ISettingsProps, any> {
 
   private createGrid = () => {
     const grid = []
-    const {gridData} = this.state
+    const { gridData } = this.state
 
     for (let i = 0; i < 3; i++) {
       for (let x = 0; x < 4; x++) {
-        grid.push(<div className={`local-map-grid
-         ${gridData.some((el:any) => el.x === x && el.y === i && el.active) ? 'active' : ''}`}
-          onClick={() => this.setActiveGrid(x, i)}
+        grid.push(<div className={`local-map-grid ${i === 1 && (x === 1 || x === 3) ? 'orange' : i === 1 && x === 2 ? 'red' : (x > 0 && (i === 0 || i === 2)) ? 'orange' : 'yellow'}
+         ${gridData.some((el: any) => el.x === x && el.y === i && el.active) ? 'active' : ''}`}
+          // onClick={() => this.setActiveGrid(x, i)}
           key={i + ' ' + x} />)
       }
     }
@@ -82,15 +80,15 @@ class LocalMap extends React.Component<ISettingsProps, any> {
     return grid
   }
 
-  private setActiveGrid = (x: number, y: number) => {
-    const data = this.state.gridData.map((el: any) => {
-      if (el.x === x && el.y === y) {
-        el.active = true
-      }
-      return el
-    })
-    this.setState({ gridData: data })
-  }
+  // private setActiveGrid = (x: number, y: number) => {
+  //   const data = this.state.gridData.map((el: any) => {
+  //     if (el.x === x && el.y === y) {
+  //       el.active = true
+  //     }
+  //     return el
+  //   })
+  //   this.setState({ gridData: data })
+  // }
 
   private setNextGrid = () => {
     let trigger = true

@@ -3,6 +3,7 @@ import { GoogleMap, OverlayView, Polyline, withGoogleMap } from "react-google-ma
 import green from '../../styles/img/green white.png'
 import orange from '../../styles/img/orange.png'
 import red from '../../styles/img/red white.png'
+import yellow from '../../styles/img/yellos circle.png'
 
 const strictBounds = new google.maps.LatLngBounds(
 
@@ -95,7 +96,8 @@ const GoogleMapView = withGoogleMap((props: IMapProps) =>
         <div className={`map-dot ${el.type}`} onClick={() => props.showDetails(el.id, true)}>
           <img src={el.type === 'green' ? green :
             el.type === 'orange' ? orange :
-              el.type === 'red' ? red : ''
+              el.type === 'red' ? red :
+              el.type === 'yellow' ? yellow : ''
           } />
           {el.time ? <div className={`map-dot-time`} style={{ color: '#d81717' }}>{el.time}</div> : ''}
           {el.mess ? el.open && <div className="map-dot-mess">

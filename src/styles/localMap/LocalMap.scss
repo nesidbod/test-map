@@ -1,5 +1,5 @@
 .local-map-container {
-    width: 80%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,11 +41,36 @@
             z-index: -1;
             transition: width 10s;
         }
+
+        .local-map-grid.red:after {
+            width: 0px;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: #ff0000bd;
+            content: '';
+            position: absolute;
+            z-index: -1;
+            transition: width 10s;
+        }
+
+        .local-map-grid.orange:after {
+            width: 0px;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: #ffa500ab;
+            content: '';
+            position: absolute;
+            z-index: -1;
+            transition: width 10s;
+        }
     
         // .operator-container-button.icon:hover, 
         .local-map-grid.active:after {
             width: 100% !important;
             z-index: 1 !important;
+            transition: width 10s;
         }
     }
 
@@ -111,13 +136,14 @@
         content: '';
         position: absolute;
         z-index: -1;
-        transition: width 10s;
+        // transition: width 10s;
     }
 
     // .operator-container-button.icon:hover, 
     .operator-container-button.icon.active:after {
         width: 100% !important;
         z-index: 1 !important;
+        transition: width 10s;
     }
 
 }

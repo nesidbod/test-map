@@ -21,7 +21,7 @@
     "resolveJsonModule": true,
     // "esModuleInterop": true,
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*","gdata/*"],
   "exclude": [
     "node_modules",
     "build",

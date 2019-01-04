@@ -1,4 +1,4 @@
-import { Button, Fab } from '@material-ui/core'
+import { Fab } from '@material-ui/core'
 import * as React from 'react'
 import GoogleMapView from '../../sComponents/gMap/GoogleMapView'
 import '../../styles/map/Maps.css'
@@ -7,13 +7,13 @@ import { extendMoment } from 'moment-range';
 
 const moment = extendMoment(Moment);
 
-import * as data from '../../idata.json'
+import * as data from '../../by_event.json'
 
 interface ISettingsProps {
   history: any
 }
 
-let interval: any = () => { }
+let interval: any = () => {return}
 
 class Map extends React.Component<ISettingsProps, any> {
   constructor(props: ISettingsProps) {
@@ -37,7 +37,7 @@ class Map extends React.Component<ISettingsProps, any> {
         { lat: 32.78800244000398, lng: 35.05891807758121, type: 'green', id: 0, open: false },
         { lat: 32.79929643743554, lng: 35.0545709406465, type: 'green', open: false, id: 1 },
         { lat: 32.79817207921318, lng: 35.06037943093315, type: 'green', open: false, id: 2 },
-        { lat: 32.7934131259387, lng: 35.069190619830124, type: 'green',  open: false, id: 3 },
+        { lat: 32.7934131259387, lng: 35.069190619830124, type: 'green', open: false, id: 3 },
         { lat: 32.79537630438263, lng: 35.05928508965508, type: 'green', id: 4, open: false },
         { lat: 32.789838607019284, lng: 35.05716078011528, type: 'green', open: false, id: 5 },
         { lat: 32.797216114483895, lng: 35.06151668755547, type: 'green', open: false, id: 6 },
@@ -57,9 +57,6 @@ class Map extends React.Component<ISettingsProps, any> {
       ]
     }
   }
-  // public componentDidMount() {
-  //   setTimeout(this.refreshData, 5000)
-  // }
 
   public componentDidMount() {
     this.initData()
@@ -88,7 +85,7 @@ class Map extends React.Component<ISettingsProps, any> {
             <GoogleMapView
               containerElement={<div style={{
                 height: '500px',
-                width: '860px'
+                width: '100%'
               }} />}
               mapElement={<div style={{ height: `100%` }} />}
               position={this.state.center}
@@ -101,9 +98,9 @@ class Map extends React.Component<ISettingsProps, any> {
 
           </div>
           <div className="map-share">
-            <Button variant="contained" >
+            <div className="operator-container-button">
               Share map
-          </Button>
+            </div>
           </div>
         </div>
       </div>
@@ -162,52 +159,40 @@ class Map extends React.Component<ISettingsProps, any> {
 
   }
 
-
   private initData = () => {
 
     const { indicationsData, indications } = this.state
-    const curentData = data.testData.filter((el: any) => {
-      if (moment().format("YYYY-MM-DD") === el.date) {
+    const curentData = data.byEvent.filter((el: any) => {
+      if (moment().isAfter(moment(el.date)) && moment().subtract(12, 'hours').isBefore(moment(el.date))) {
         return el
       }
     })
 
     curentData.forEach((elem: any) => {
-
-      for (const el in elem) {
-        if (el !== 'date') {
-
-          elem[el].forEach((sensor: any) => {
-
-            if (moment().isAfter(moment(`${elem.date} ${sensor.time} `))) {
-              indicationsData.forEach((value: any) => {
-                if (value.id === sensor.id) {
-                  value.type = sensor.status
-                  value.time = sensor.time
-                  value.mess = sensor.message
-                }
-              })
-            }
-
-          })
+      indicationsData.forEach((value: any) => {
+        if (value.id === elem.id) {
+          value.type = elem.status
+          value.time = moment(elem.date).format("MM:HH")
+          value.mess = elem.message
         }
-      }
+      })
 
     })
+
     indications.forEach((button: any) => {
-
-        button.value = 0;
-      
+      button.value = 0;
     })
+
     indicationsData.forEach((value: any) => {
       indications.forEach((button: any) => {
 
         if (button.color === value.type) {
-          button.value =  button.value +1
+          button.value++
         }
       })
     })
-    this.setState({indications,indicationsData})
+    this.setState({ indications, indicationsData })
+
   }
 
 }

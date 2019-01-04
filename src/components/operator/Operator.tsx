@@ -17,7 +17,7 @@ class Operator extends React.Component<ISettingsProps, any> {
       open: '',
       accept: false,
       testData: [
-        { id: 1, type: 'Benzene', location: 'G5', voc: 'benzene, hight concetration', Area: 'near oil tanks', detected: '', responder: 'Moshe', direction: 'nw', speed: '10km/hr' },
+        { id: 1, type: 'Benzene', location: 'G5', voc: 'benzene, hight concetration', Area: 'near oil tanks', detected: '11:00', responder: 'Moshe', direction: 'nw', speed: '10km/hr' },
         // { id: 2,type: 'Gaz', location: 'G1', voc: 'gaz, hight concetration', Area: 'near gaz tanks', detected: '', responder: 'Moshe', direction: 'nw', speed: '13km/hr' },
 
       ]
@@ -82,7 +82,7 @@ class Operator extends React.Component<ISettingsProps, any> {
         })}
 
         {this.state.accept ? <LocalMap /> : ''}
-        {!this.state.accept ? <div className="operator-container-button" onClick={() => this.setState({ accept: true })}>Accept</div> : ''}
+        {!this.state.accept ? <div className="operator-container-button" onClick={() =>this.setState({ accept: true, open: false })}>Accept</div> : ''}
       </div>
     )
   }
