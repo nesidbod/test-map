@@ -12,7 +12,7 @@ levels = [1, 2, 3, 4]
 level_names = ['green', 'yellow', 'orange', 'red']
 levels_from_green = ['yellow', 'orange']
 levels_from_yellow = ['orange', 'red']
-levels_from_orange = ['red']
+levels_from_orange = ['green', 'red']
 levels_from_red = ['green']
 level_green_messages = ['All is good.',
                         'A corroded pipe has been replaced, and all is good.',
@@ -357,8 +357,17 @@ def generate_data():
         }
         data['byEvent'].append(event)
 
-    with open('/tmp/data.json', 'w') as f:
-        f.write(json.dumps(data))
+    with open('/tmp/test_data_raw.json', 'w') as f:
+        to_dump = {
+            'testData' : data['testData'],
+            'recorders_global_state': data['recorders_global_state']
+        }
+        f.write(json.dumps(to_dump))
+    with open('/tmp/test_by_event_raw.json', 'w') as f:
+        to_dump = {
+            'byEvent': data['byEvent']
+        }
+        f.write(json.dumps(to_dump))
 
 
 if __name__ == '__main__':
