@@ -61,7 +61,7 @@ class LocalMap extends React.Component<ISettingsProps, any> {
 
   private searchError = () => {
     this.setState({ search: true })
-    axios.get(`http://192.168.5.2:8080/v1/do_measurement?app=dogs&name=operator1`)
+    axios.get(`http://192.168.5.1:8080/v1/do_measurement?app=dogs&name=operator1`)
       .then(res => {
       })
       .catch(function(error) {
