@@ -7,7 +7,7 @@ import { extendMoment } from 'moment-range';
 
 const moment = extendMoment(Moment);
 
-import * as data from '../../test_data.json'
+import * as data from '../../gdata/test_data.json'
 
 interface ISettingsProps {
   history: any
@@ -18,7 +18,6 @@ class Graph extends React.Component<ISettingsProps, any> {
     super(props)
     this.state = {
       dateRange: [
-        '1D',
         '5D',
         '1W',
         '2W',
@@ -36,11 +35,13 @@ class Graph extends React.Component<ISettingsProps, any> {
       options: {
         scales: {
           xAxes: [{
+            stacked: true,
             ticks: {
               autoSkip: false
             }
           }],
           yAxes: [{
+            stacked: true,
             ticks: {
               stepSize: 2
             }
@@ -49,12 +50,7 @@ class Graph extends React.Component<ISettingsProps, any> {
         tooltips: {
           callbacks: {
             label: (tooltipItem: any, dat: any) => {
-              // var label = data.datasets[tooltipItem.datasetIndex].label || '';
-              // if (label) {
-              //     label += ': ';
-              // }
-              // label += Math.round(tooltipItem.yLabel * 100) / 100;
-              return tooltipItem.yLabel;
+              return `${dat.datasets[tooltipItem.datasetIndex].label} ${tooltipItem.yLabel}`;
             }
           }
         }
@@ -62,17 +58,7 @@ class Graph extends React.Component<ISettingsProps, any> {
       graph: {
         datasets: [
           {
-            label: 'Orange',
-            backgroundColor: 'orange',
-            borderColor: 'orange',
-            borderWidth: 1,
-            hoverBackgroundColor: 'orange',
-            hoverBorderColor: 'orange',
-            bounds: 'data',
-            data: []
-          },
-          {
-            label: 'Red',
+            label: 'Major',
             backgroundColor: '#d81717',
             borderColor: '#d81717',
             borderWidth: 1,
@@ -82,7 +68,17 @@ class Graph extends React.Component<ISettingsProps, any> {
             data: []
           },
           {
-            label: 'Yellow',
+            label: 'Serious',
+            backgroundColor: 'orange',
+            borderColor: 'orange',
+            borderWidth: 1,
+            hoverBackgroundColor: 'orange',
+            hoverBorderColor: 'orange',
+            bounds: 'data',
+            data: []
+          },
+          {
+            label: 'Incident',
             backgroundColor: '#e6e621',
             borderColor: '#e6e621',
             borderWidth: 1,
@@ -176,10 +172,6 @@ class Graph extends React.Component<ISettingsProps, any> {
     const endDate = moment().format("YYYY-MM-DD")
 
     switch (date) {
-      case '1D':
-        startDate = moment().format("YYYY-MM-DD")
-        this.setState({ startDate, endDate })
-        break
       case '5D':
         startDate = moment().subtract(5, 'days').format("YYYY-MM-DD")
         this.setState({ startDate, endDate })
@@ -226,8 +218,8 @@ class Graph extends React.Component<ISettingsProps, any> {
         return el
       }
     })
-    graph.datasets[0].data = orange
-    graph.datasets[1].data = red
+    graph.datasets[1].data = orange
+    graph.datasets[0].data = red
     graph.datasets[2].data = yellow
     this.setState({ labels, graph })
   }

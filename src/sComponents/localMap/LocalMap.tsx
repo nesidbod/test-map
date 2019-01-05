@@ -1,13 +1,12 @@
-// import { Button, Fab } from '@material-ui/core'
 import * as React from 'react'
 import '../../styles/localMap/LocalMap.css'
-// import errorIcon from '../../styles/img/error.png'
 import local_back from '../../styles/img/LocalMap.png'
 import senser from '../../styles/img/nano_logo.png'
 import axios from 'axios';
-
+import { Icon } from '@material-ui/core';
 interface ISettingsProps {
   // history: any
+  onClose(): any
 }
 
 class LocalMap extends React.Component<ISettingsProps, any> {
@@ -45,16 +44,19 @@ class LocalMap extends React.Component<ISettingsProps, any> {
         </div>
 
         <div className={`operator-container-button icon ${this.state.search ? 'active' : ''}`}
-          onClick={(event) => !this.state.search &&this.searchError()}><img src={senser} /><span>Measure</span></div>
+          onClick={(event) => !this.state.search && this.searchError()}><img src={senser} /><span>Measure</span></div>
         <div className="local-map-report-container">
           <div className="local-map-report">
-            <textarea />
+            <textarea placeholder={"Report here ..."}/>
+            <div className="local-map-report-icons">
+              <div>
+                <Icon className="local-map-report-icon">mic</Icon>
+                <Icon className="local-map-report-icon">photo_camera</Icon>
+              </div>
+            </div>
           </div>
-          <div className="operator-container-button white">Send Report</div>
-
-
         </div>
-
+        <div className="operator-container-button white" onClick={() => this.props.onClose()}>Send Report</div>
       </div>
     )
   }
@@ -63,8 +65,9 @@ class LocalMap extends React.Component<ISettingsProps, any> {
     this.setState({ search: true })
     axios.get(`http://192.168.5.1:8080/v1/do_measurement?app=dogs&name=operator1`)
       .then(res => {
+        console.log('res', res)
       })
-      .catch(function(error) {
+      .catch((error) => {
         console.log(error)
       });
     this.setNextGrid()
@@ -77,9 +80,10 @@ class LocalMap extends React.Component<ISettingsProps, any> {
 
     for (let i = 0; i < 3; i++) {
       for (let x = 0; x < 4; x++) {
-        grid.push(<div className={`local-map-grid ${i === 1 && (x === 1 || x === 3) ? 'orange' : i === 1 && x === 2 ? 'red' : (x > 0 && (i === 0 || i === 2)) ? 'orange' : 'yellow'}
+        grid.push(<div className={`local-map-grid ${i === 1 && (x === 1 || x === 3) ?
+          'orange' : i === 1 && x === 2 ? 'red' : (x > 0 && (i === 0 || i === 2)) ? 'orange' : 'yellow'}
          ${gridData.some((el: any) => el.x === x && el.y === i && el.active) ? 'active' : ''}`}
-          // onClick={() => this.setActiveGrid(x, i)}
+          onClick={() => this.setActiveGrid(x, i)}
           key={i + ' ' + x} />)
       }
     }
@@ -87,15 +91,15 @@ class LocalMap extends React.Component<ISettingsProps, any> {
     return grid
   }
 
-  // private setActiveGrid = (x: number, y: number) => {
-  //   const data = this.state.gridData.map((el: any) => {
-  //     if (el.x === x && el.y === y) {
-  //       el.active = true
-  //     }
-  //     return el
-  //   })
-  //   this.setState({ gridData: data })
-  // }
+  private setActiveGrid = (x: number, y: number) => {
+    const data = this.state.gridData.map((el: any) => {
+      if (el.x === x && el.y === y) {
+        el.active = true
+      }
+      return el
+    })
+    this.setState({ gridData: data })
+  }
 
   private setNextGrid = () => {
     let trigger = true

@@ -3,7 +3,6 @@ import IRootState from '../../models/rootState'
 import Map from './Map'
 
 const mapStateToProps = (state: IRootState) => ({
-
 })
 
 const mapDispatchToProps = {

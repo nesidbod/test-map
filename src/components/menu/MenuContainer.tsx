@@ -3,6 +3,7 @@ import IRootState from '../../models/rootState'
 import Menu from './Menu'
 
 const mapStateToProps = (state: IRootState) => ({
+  user: state.auth.user
 
 })
 

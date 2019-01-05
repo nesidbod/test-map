@@ -5,6 +5,9 @@ import errorIcon from '../../styles/img/error.png'
 import mapIcon from '../../styles/img/map.png'
 import { Icon } from '@material-ui/core';
 import LocalMap from '../../sComponents/localMap/LocalMap'
+import { Snackbar, IconButton, SnackbarContent, } from '@material-ui/core'
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import CloseIcon from '@material-ui/icons/Close';
 
 interface ISettingsProps {
   history: any
@@ -17,7 +20,11 @@ class Operator extends React.Component<ISettingsProps, any> {
       open: '',
       accept: false,
       testData: [
-        { id: 1, type: 'Benzene', location: 'G5', voc: 'benzene, hight concetration', Area: 'near oil tanks', detected: '11:00', responder: 'Moshe', direction: 'nw', speed: '10km/hr' },
+        { id: 1, type: 'Benzene', 
+        location: 'G5', voc: 'benzene, hight concetration', 
+        Area: 'near oil tanks', detected: '11:00',
+         responder: 'Moshe', 
+         direction: 'nw', speed: '10km/hr' },
         // { id: 2,type: 'Gaz', location: 'G1', voc: 'gaz, hight concetration', Area: 'near gaz tanks', detected: '', responder: 'Moshe', direction: 'nw', speed: '13km/hr' },
 
       ]
@@ -40,7 +47,7 @@ class Operator extends React.Component<ISettingsProps, any> {
               </div>
             </div>
             <div className="operator-container-item-details-buttom"
-             onClick={() => this.openDetails(el.id)}> Details <Icon>expand_more</Icon> </div>
+              onClick={() => this.openDetails(el.id)}> Details <Icon>expand_more</Icon> </div>
 
             {this.state.open === el.id ?
               <div className="operator-container-item-details">
@@ -50,8 +57,8 @@ class Operator extends React.Component<ISettingsProps, any> {
                 </div>
                 <div className="operator-container-item-details-item">
                   <div className="operator-container-item-details-item-label">Location:</div>
-                  <div className="operator-container-item-details-item-value" ><span className="map" 
-                  onClick={() => this.setState({ accept: true, open: false })}>{el.location}</span></div>
+                  <div className="operator-container-item-details-item-value" ><span className="map"
+                    onClick={() => this.setState({ accept: true, open: false })}>{el.location}</span></div>
                 </div>
                 <div className="operator-container-item-details-item">
                   <div className="operator-container-item-details-item-label">Area:</div>
@@ -81,8 +88,39 @@ class Operator extends React.Component<ISettingsProps, any> {
           </div>
         })}
 
-        {this.state.accept ? <LocalMap /> : ''}
-        {!this.state.accept ? <div className="operator-container-button" onClick={() =>this.setState({ accept: true, open: false })}>Accept</div> : ''}
+        {this.state.accept ? <LocalMap onClose={() => this.setState({ accept: false,showSnack: true })} /> : ''}
+        {!this.state.accept ? <div className="operator-container-button" onClick={() => this.setState({ accept: true, open: false })}>Accept</div> : ''}
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'center'
+          }}
+          open={this.state.showSnack}
+          autoHideDuration={3000}
+          onClick={() => this.setState({ showSnack: false })}
+          onClose={() => this.setState({ showSnack: false })}
+          aria-describedby="client-snackbar"
+          ContentProps={{
+            'aria-describedby': 'message-id',
+          }}
+        >
+          <SnackbarContent
+            className={'snackbar'}
+            aria-describedby="client-snackbar"
+            action={[
+              <IconButton
+                key="close"
+                aria-label="Close"
+                color="inherit"
+                className={''}
+                onClick={() => this.setState({ showSnack: false })}
+              >
+                <CloseIcon />
+              </IconButton>,
+            ]}
+            message={<div id="message-id">
+              <CheckCircleIcon /> <span>Report filed</span></div>} />
+        </Snackbar>
       </div>
     )
   }

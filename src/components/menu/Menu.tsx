@@ -40,6 +40,7 @@ const decorate = withStyles(({ transitions, zIndex }) => ({
 
 interface IMainAppBarProps {
   history: any
+  user: any
 }
 
 export default decorate(
@@ -140,22 +141,22 @@ export default decorate(
                   /> 
                   <ListItemText
                     className="playlist-content-title"
-                    primary={'test user'}
-                    secondary={'test@test.com'}
+                    primary={this.props.user.name || "test"}
+                    secondary={this.props.user.email || "test@test.com"}
                   />
                 </div>
                 <MenuItem onClick={() => {
                   this.props.history.push('map')
                   this.setState({ anchorEl2: undefined })
-                }} className={`burger-menu-item ${activePage === 'map' ? 'active' : ''}`}> <span>Map view</span></MenuItem>
+                }} className={`burger-menu-item ${activePage === 'map' ? 'active' : ''}`}> <span>VOC Watch Map</span></MenuItem>
                 <MenuItem onClick={() => {
                   this.props.history.push('graph')
                   this.setState({ anchorEl2: undefined })
-                }} className={`burger-menu-item ${activePage === 'graph' ? 'active' : ''}`}><span>Graph view</span></MenuItem>
+                }} className={`burger-menu-item ${activePage === 'graph' ? 'active' : ''}`}><span>VOC Watch Statistics</span></MenuItem>
                 <MenuItem onClick={() => {
                   this.props.history.push('/')
                   this.setState({ anchorEl2: undefined })
-                }} className={`burger-menu-item ${activePage === '' ? 'active' : ''}`}><span>Operator View</span></MenuItem>
+                }} className={`burger-menu-item ${activePage === '' ? 'active' : ''}`}><span> Leak Detect</span></MenuItem>
               </Menu>
             </Toolbar>
           </AppBar>

@@ -7,13 +7,13 @@ import { extendMoment } from 'moment-range';
 
 const moment = extendMoment(Moment);
 
-import * as data from '../../by_event.json'
+import * as data from '../../gdata/by_event.json'
 
 interface ISettingsProps {
   history: any
 }
 
-let interval: any = () => {return}
+let interval: any = () => { return }
 
 class Map extends React.Component<ISettingsProps, any> {
   constructor(props: ISettingsProps) {
@@ -26,6 +26,7 @@ class Map extends React.Component<ISettingsProps, any> {
       newX: 0,
       lastY: 0,
       newY: 0,
+      lastUpdated: '',
       mouseDown: false,
       activeCenter: { type: '', index: 0 },
       indications: [
@@ -60,7 +61,7 @@ class Map extends React.Component<ISettingsProps, any> {
 
   public componentDidMount() {
     this.initData()
-    interval = setInterval(this.initData, 6000);
+    interval = setInterval(this.initData, 5000);
   }
 
   public componentWillUnmount() {
@@ -73,13 +74,19 @@ class Map extends React.Component<ISettingsProps, any> {
     return (
       <div className="map-container">
         <div className="map">
-          <div className="map-header">
-            {indications.map((el: any, index: number) => {
-              return <Fab className={`map-header-item ${el.color}`} key={index}
-                onClick={() => this.setCenter(el.color)}>
-                {el.value}
-              </Fab>
-            })}
+          <div className="map-wrap-header">
+            <div className="map-block-updated">
+              Event severeness <br />
+              {this.state.lastUpdated}
+            </div>
+            <div className="map-header">
+              {indications.map((el: any, index: number) => {
+                return <Fab className={`map-header-item ${el.color}`} key={index}
+                  onClick={() => this.setCenter(el.color)}>
+                  {el.value}
+                </Fab>
+              })}
+            </div>
           </div>
           <div className="map-content">
             <GoogleMapView
@@ -171,8 +178,9 @@ class Map extends React.Component<ISettingsProps, any> {
     curentData.forEach((elem: any) => {
       indicationsData.forEach((value: any) => {
         if (value.id === elem.id) {
+          let date = elem.date.split(' ').slice(1)[0].split(':').slice(0)
           value.type = elem.status
-          value.time = moment(elem.date).format("MM:HH")
+          elem.status !== 'green' && (value.time = `${date[0]}:${date[1]}`)
           value.mess = elem.message
         }
       })
@@ -191,7 +199,8 @@ class Map extends React.Component<ISettingsProps, any> {
         }
       })
     })
-    this.setState({ indications, indicationsData })
+    // console.log('indicationsData',indicationsData)
+    this.setState({ indications, indicationsData, lastUpdated: moment().format('YYYY-MM-DD h:mm') })
 
   }
 
