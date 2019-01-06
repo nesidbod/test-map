@@ -54,7 +54,6 @@ const GoogleMapView = withGoogleMap((props: IMapProps) =>
       fullscreenControl: false,
     }}
 
-    // onClick={(el) => console.log(el.latLng.lat(), el.latLng.lng())}
     onDrag={() => {
       if (!strictBounds.contains(mapSet.getCenter())) {
         mapSet.panToBounds(strictBounds, 5)
@@ -75,7 +74,6 @@ const GoogleMapView = withGoogleMap((props: IMapProps) =>
           path: el.coord,
           strokeColor: '#4c4a4a',
           strokeOpacity: 0,
-          // strokeWeight: 2,
           icons: [{
             offset: '0',
             repeat: '20px',

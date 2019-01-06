@@ -1,5 +1,6 @@
 import { Fab } from '@material-ui/core'
 import * as Moment from 'moment'
+import 'moment-duration-format';
 import { extendMoment } from 'moment-range';
 import * as React from 'react'
 import GoogleMapView from '../../sComponents/gMap/GoogleMapView'
@@ -7,7 +8,19 @@ import '../../styles/map/Maps.css'
 
 const moment = extendMoment(Moment);
 
+
 import * as data from '../../gdata/by_event.json'
+
+interface IDuration extends Moment.Duration {
+  Format: (template?: string, precision?: number, settings?: DurationSettings) => string;
+}
+
+interface DurationSettings {
+  forceLength: boolean;
+  precision: number;
+  template: string;
+  trim: boolean | 'left' | 'right';
+}
 
 interface ISettingsProps {
   history: any
@@ -61,7 +74,7 @@ class Map extends React.Component<ISettingsProps, any> {
 
   public componentDidMount() {
     this.initData()
-    interval = setInterval(this.initData, 5000);
+    interval = setInterval(this.initData, 30000);
   }
 
   public componentWillUnmount() {
@@ -169,26 +182,32 @@ class Map extends React.Component<ISettingsProps, any> {
   private initData = () => {
 
     const { indicationsData, indications } = this.state
-    const curentData = data.byEvent.filter((el: any) => {
-      if (moment().isAfter(moment(el.date)) && moment().subtract(12, 'hours').isBefore(moment(el.date))) {
-        return el
+    data.byEvent.forEach((elem: any) => {
+      if (moment().isAfter(moment(elem.date))) {
+        indicationsData.forEach((value: any) => {
+          if (value.id === elem.id) {
+            let testData :any 
+            const dataRange = elem.elapsed_time.split(':').slice(0)
+            testData = moment(elem.date).subtract(dataRange[0], 'hours')
+            testData = moment(testData).subtract(dataRange[1], "minutes")
+            const duration = Moment.duration(moment().diff(testData,"minutes"), 'minutes') as IDuration;
+            let dataElapsed = ''
+
+            if(Math.floor(duration.asHours()) === 0) {
+              dataElapsed = `00:${duration.format("hh:mm")}`
+            }else {
+              dataElapsed = duration.format("hh:mm")
+            }
+           
+            value.type = elem.status
+            value.elapsed_time = elem.elapsed_time
+            value.time = dataElapsed
+            value.mess = elem.message
+
+          }
+        })
       }
     })
-
-    curentData.forEach((elem: any) => {
-      indicationsData.forEach((value: any) => {
-        if (value.id === elem.id) {
-          const date = elem.date.split(' ').slice(1)[0].split(':').slice(0)
-          value.type = elem.status
-          if ( value.type !== "green") {
-            value.time = `${date[0]}:${date[1]}`
-            value.mess = elem.message
-          }
-        }
-      })
-
-    })
-    console.log('indicationsData', indicationsData, curentData)
 
     indications.forEach((button: any) => {
       button.value = 0;
@@ -202,7 +221,6 @@ class Map extends React.Component<ISettingsProps, any> {
         }
       })
     })
-    // console.log('indicationsData',indicationsData)
     this.setState({ indications, indicationsData, lastUpdated: moment().format('YYYY-MM-DD h:mm') })
 
   }

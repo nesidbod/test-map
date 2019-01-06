@@ -18,7 +18,7 @@ class Login extends React.Component<ISettingsProps, any> {
       accept: false,
       users: [
         {
-          name: 'John Doe', email: 'johndoe@cleanrefinery.com'
+          name: 'Igal Verbel', email: 'igalverbel@cleanrefinery.com'
         }
       ]
     }
