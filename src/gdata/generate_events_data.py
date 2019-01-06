@@ -10,8 +10,8 @@ readers_names = ['ScentRecorder1', 'ScentRecorder2', 'ScentRecorder3', 'ScentRec
 time_intervals = [5, 7, 11, 15, 23, 30, 45, 60]
 levels = [1, 2, 3, 4]
 level_names = ['green', 'yellow', 'orange', 'red']
-levels_from_green = ['yellow', 'orange']
-levels_from_yellow = ['orange', 'red']
+levels_from_green = ['green', 'yellow', 'orange']
+levels_from_yellow = ['green', 'orange', 'red']
 levels_from_orange = ['green', 'red']
 levels_from_red = ['green']
 level_green_messages = ['All is good.',
@@ -343,7 +343,7 @@ def generate_data():
         }
         if event_status == 'yellow':
             yellow_event_counter = yellow_event_counter + 1
-        if event_status == 'ornge':
+        if event_status == 'orange':
             orange_event_counter = orange_event_counter + 1
         if event_status == 'red':
             red_event_counter = red_event_counter + 1
