@@ -12,15 +12,16 @@
         width: 304px;
         display: flex;
         flex-wrap: wrap;
+        overflow: hidden;
 
         img {
-            height: 235px;
+            height: 240px;
             position: absolute;
             margin: 0 auto;
             left: 0;
             right: 0;
-            width: 100%;
-            padding: 10px 0;
+            width: 105%;
+            margin-left: -7px;
         }
 
         .local-map-grid {
