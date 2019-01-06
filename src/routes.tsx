@@ -1,14 +1,14 @@
 import * as React from 'react'
 import { Route } from 'react-router'
 import { ConnectedRouter,routerActions } from 'react-router-redux'
-import MapContainer from './components/map/MapContainer'
-import GraphContainer from './components/graph/GraphContainer'
-import OperatorContainer from './components/operator/OperatorContainer'
-import MenuContainer from './components/menu/MenuContainer'
-import LoginContainer from './components/login/LoginContainer'
-import { connectedRouterRedirect } from 'redux-auth-wrapper/history4/redirect'
-import IRootState from './models/rootState'
 import locationHelperBuilder from 'redux-auth-wrapper/history4/locationHelper'
+import { connectedRouterRedirect } from 'redux-auth-wrapper/history4/redirect'
+import GraphContainer from './components/graph/GraphContainer'
+import LoginContainer from './components/login/LoginContainer'
+import MapContainer from './components/map/MapContainer'
+import MenuContainer from './components/menu/MenuContainer'
+import OperatorContainer from './components/operator/OperatorContainer'
+import IRootState from './models/rootState'
 
 const locationHelper = locationHelperBuilder({})
 

@@ -1,9 +1,9 @@
-import * as React from 'react'
-import '../../styles/graph/Graph.css'
-import { Bar } from 'react-chartjs-2';
 import { Checkbox } from '@material-ui/core';
 import * as Moment from 'moment'
 import { extendMoment } from 'moment-range';
+import * as React from 'react'
+import { Bar } from 'react-chartjs-2';
+import '../../styles/graph/Graph.css'
 
 const moment = extendMoment(Moment);
 

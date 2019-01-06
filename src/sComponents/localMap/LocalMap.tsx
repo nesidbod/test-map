@@ -1,9 +1,9 @@
+import { Icon } from '@material-ui/core';
+import axios from 'axios';
 import * as React from 'react'
-import '../../styles/localMap/LocalMap.css'
 import local_back from '../../styles/img/LocalMap.png'
 import senser from '../../styles/img/nano_logo.png'
-import axios from 'axios';
-import { Icon } from '@material-ui/core';
+import '../../styles/localMap/LocalMap.css'
 interface ISettingsProps {
   // history: any
   onClose(): any

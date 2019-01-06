@@ -1,13 +1,13 @@
 // import { Button, Fab } from '@material-ui/core'
-import * as React from 'react'
-import '../../styles/operator/Operator.css'
-import errorIcon from '../../styles/img/error.png'
-import mapIcon from '../../styles/img/map.png'
 import { Icon } from '@material-ui/core';
-import LocalMap from '../../sComponents/localMap/LocalMap'
-import { Snackbar, IconButton, SnackbarContent, } from '@material-ui/core'
+import { IconButton, Snackbar, SnackbarContent, } from '@material-ui/core'
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import CloseIcon from '@material-ui/icons/Close';
+import * as React from 'react'
+import LocalMap from '../../sComponents/localMap/LocalMap'
+import errorIcon from '../../styles/img/error.png'
+import mapIcon from '../../styles/img/map.png'
+import '../../styles/operator/Operator.css'
 
 interface ISettingsProps {
   history: any

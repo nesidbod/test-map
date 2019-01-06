@@ -99,7 +99,7 @@ const GoogleMapView = withGoogleMap((props: IMapProps) =>
               el.type === 'red' ? red :
               el.type === 'yellow' ? yellow : ''
           } />
-          {el.time ? <div className={`map-dot-time`} style={{ color: '#d81717' }}>{el.time}</div> : ''}
+          {el.type !== 'green'? <div className={`map-dot-time`} style={{ color: '#d81717' }}>{el.time}</div> : ''}
           {el.mess ? el.open && <div className="map-dot-mess">
             <span className="map-dot-mess-close"
               onClick={(event: any) => (event.stopPropagation(), props.showDetails(el.id, false))}> x</span>

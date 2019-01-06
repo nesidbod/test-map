@@ -1,9 +1,9 @@
 // import { Button, Fab } from '@material-ui/core'
-import * as React from 'react'
-import '../../styles/login/Login.css'
-import { List, ListItem, Avatar, ListItemText } from '@material-ui/core'
+import { Avatar, List, ListItem, ListItemText } from '@material-ui/core'
 import ImageIcon from '@material-ui/icons/Image';
+import * as React from 'react'
 import IAction from 'src/models/IAction';
+import '../../styles/login/Login.css'
 
 interface ISettingsProps {
   history: any

@@ -8,9 +8,9 @@ import {
   Toolbar,
 } from '@material-ui/core'
 import { withStyles, WithStyles } from '@material-ui/core/styles'
+import MenuIcon from '@material-ui/icons/Menu'
 // import AccountCircle from '@material-ui/icons/AccountCircle'
 import * as React from 'react'
-import MenuIcon from '@material-ui/icons/Menu'
 import '../../styles/menu/Menu.css'
 
 const decorate = withStyles(({ transitions, zIndex }) => ({

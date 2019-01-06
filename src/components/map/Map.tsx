@@ -1,9 +1,9 @@
 import { Fab } from '@material-ui/core'
+import * as Moment from 'moment'
+import { extendMoment } from 'moment-range';
 import * as React from 'react'
 import GoogleMapView from '../../sComponents/gMap/GoogleMapView'
 import '../../styles/map/Maps.css'
-import * as Moment from 'moment'
-import { extendMoment } from 'moment-range';
 
 const moment = extendMoment(Moment);
 
@@ -178,14 +178,17 @@ class Map extends React.Component<ISettingsProps, any> {
     curentData.forEach((elem: any) => {
       indicationsData.forEach((value: any) => {
         if (value.id === elem.id) {
-          let date = elem.date.split(' ').slice(1)[0].split(':').slice(0)
+          const date = elem.date.split(' ').slice(1)[0].split(':').slice(0)
           value.type = elem.status
-          elem.status !== 'green' && (value.time = `${date[0]}:${date[1]}`)
-          value.mess = elem.message
+          if ( value.type !== "green") {
+            value.time = `${date[0]}:${date[1]}`
+            value.mess = elem.message
+          }
         }
       })
 
     })
+    console.log('indicationsData', indicationsData, curentData)
 
     indications.forEach((button: any) => {
       button.value = 0;
