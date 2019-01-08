@@ -21,11 +21,11 @@ class Operator extends React.Component<ISettingsProps, any> {
       accept: false,
       testData: [
         { id: 1, type: 'Benzene', 
-        location: 'G5', voc: 'benzene, hight concetration', 
+        location: 'G5', voc: 'benzene, high concetration', 
         Area: 'near oil tanks', detected: '11:00',
          responder: 'Moshe', 
          direction: 'nw', speed: '10km/hr' },
-        // { id: 2,type: 'Gaz', location: 'G1', voc: 'gaz, hight concetration', Area: 'near gaz tanks', detected: '', responder: 'Moshe', direction: 'nw', speed: '13km/hr' },
+        // { id: 2,type: 'Gaz', location: 'G1', voc: 'gaz, high concetration', Area: 'near gaz tanks', detected: '', responder: 'Moshe', direction: 'nw', speed: '13km/hr' },
 
       ]
     }
