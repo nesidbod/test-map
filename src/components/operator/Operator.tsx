@@ -22,9 +22,9 @@ class Operator extends React.Component<ISettingsProps, any> {
       testData: [
         { id: 1, type: 'Benzene', 
         location: 'G5', voc: 'Benzene, High concetration', 
-        Area: 'near oil tanks', detected: '11:00',
+        Area: 'Near oil tanks', Detected: '11:00',
          responder: 'Moshe', 
-         direction: 'nw', speed: '10km/hr' },
+         direction: 'NW', speed: '10km/hr' },
         // { id: 2,type: 'Gaz', location: 'G1', voc: 'Gaz, High Concetration', Area: 'near gaz tanks', detected: '', responder: 'Moshe', direction: 'nw', speed: '13km/hr' },
 
       ]
